@@ -1,6 +1,6 @@
 package org.example;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 import com.codeborne.selenide.Configuration;
@@ -50,9 +50,10 @@ public class AppTest {
         for (int i = 0; i < 2; i++) {
             secondTest();
             $(By.xpath("//ul[@class='nav navbar-nav']//a[contains(text(), 'Темы')]")).shouldBe(visible).click();
+            Thread.sleep(2000);
         }
 
-        Thread.sleep(10000);
+        Thread.sleep(5000);
     }
 
     public void registrationTest(){
@@ -60,23 +61,37 @@ public class AppTest {
         $(By.xpath("//*[@id='id_username']")).val("Krylov");
         $(By.xpath("//*[@id='id_password']")).val("amigo1986");
         $(By.xpath("//button[@class='btn btn-primary btn-block']")).should(visible).click();
-        Assert.assertTrue($(By.xpath("//ul[@class='ul nav navbar-nav nav-user']/li[@class='dropdown']/a[@class='dropdown-toggle']")).shouldBe(visible).isDisplayed());
+        Assert.assertTrue($(By.xpath("//ul[@class='ul nav navbar-nav nav-user']" +
+                "/li[@class='dropdown']" +
+                "/a[@class='dropdown-toggle']"))
+                .shouldBe(visible).isDisplayed());
     }
 
     public void secondTest() throws InterruptedException {
         String post  = "Съешь же ещё этих мягких французских булок да выпей чаю";
-        ElementsCollection collection = $$(By.xpath("//li[@class='list-group-item thread-new']//a[@class='item-title thread-title']")).filter(visible);
-        //TODO Реализовать исключение опросов из коллекции
-
+        ElementsCollection collection = $$(By.xpath("//div[@class='row thread-row']"))
+                .filter(visible)
+                .exclude(have(text("Опрос")));
         int a = (int) (collection.size()*Math.random());
-        collection.get(a).click();
+        collection.get(a).$(By.xpath(".//a[@class='item-title thread-title']")).click();
 
         Thread.sleep(2000);
-        $(By.xpath("//button[@class='btn btn-primary btn-block btn-outline']")).shouldBe(visible).click();
-        $(By.xpath("//*[@id='editor-textarea']")).shouldBe(visible).val(post);
+        $(By.xpath("//button[@class='btn btn-primary btn-block btn-outline']"))
+                .shouldBe(visible)
+                .click();
+        $(By.xpath("//*[@id='editor-textarea']"))
+                .shouldBe(visible)
+                .val(post);
         Thread.sleep(2000);
-        $(By.xpath("//button[text()='Отправить ответ']")).shouldBe(visible).click();
-        Assert.assertEquals("Krylov", $(By.xpath("//li[@class='post']//a[text()='Krylov']")).shouldBe(visible).getText());
-        Assert.assertEquals(post, $(By.xpath("//li[@class='post']//article/p[text()='Съешь же ещё этих мягких французских булок да выпей чаю']")).shouldBe(visible).getText());
+        $(By.xpath("//button[text()='Отправить ответ']"))
+                .shouldBe(visible)
+                .click();
+        Assert.assertEquals("Krylov", $(By.xpath("//li[@class='post']//a[text()='Krylov']"))
+                .shouldBe(visible)
+                .getText());
+        Assert.assertEquals(post, $(By.xpath("//li[@class='post']" +
+                "//article/p[text()='Съешь же ещё этих мягких французских булок да выпей чаю']"))
+                .shouldBe(visible)
+                .getText());
     }
 }
