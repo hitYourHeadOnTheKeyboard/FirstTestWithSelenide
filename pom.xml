@@ -36,6 +36,17 @@
       <artifactId>selenide</artifactId>
       <version>5.11.1</version>
     </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>3.0.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>3.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>
