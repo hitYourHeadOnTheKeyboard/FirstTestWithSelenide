@@ -7,5 +7,5 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Page {
     String title();
 
-    String url();
+    String url() default "https://dev.n7lanit.ru";
 }

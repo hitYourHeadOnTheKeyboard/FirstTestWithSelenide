@@ -21,7 +21,8 @@ public class ElementsTest {
                 .getText());
     }
 
-    public static void checkPost(String post) {
+    public static void checkPost() {
+        String post = "Съешь же ещё этих мягких французских булок да выпей чаю";
         Assert.assertEquals(post, $(By.xpath("//li[@class='post']" +
                 "//article/p[text()='Съешь же ещё этих мягких французских булок да выпей чаю']"))
                 .shouldBe(visible)
