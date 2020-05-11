@@ -13,7 +13,7 @@ public class TopicPage extends AbstractPage {
 
     @Element("Ответить")
     public static WebElement getAnswerButton() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         return $(By.xpath("//button[@class='btn btn-primary btn-block btn-outline']"))
                 .shouldBe(visible);
     }
@@ -28,7 +28,7 @@ public class TopicPage extends AbstractPage {
 
     @Element("Отправить ответ")
     public static WebElement getSendAnswerButton() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         return $(By.xpath("//button[text()='Отправить ответ']"))
                 .shouldBe(visible);
     }

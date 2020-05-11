@@ -78,4 +78,28 @@ public class MyStepDefs {
             InstantiationException, ClassNotFoundException, InvocationTargetException {
         getPageByTitle(title).getElementByName(themeTab).click();
     }
+
+    @И("Пользователь на странице {string} выбирает случайную тему и нажимает на кнопку {string}")
+    public void пользовательНаСтраницеВыбираетСлучайнуюТемуИНажимаетНаКнопку(String title, String buttonForSubs)
+            throws IllegalAccessException, InstantiationException, ClassNotFoundException, InvocationTargetException {
+        getPageByTitle(title).getElementByName(buttonForSubs).click();
+    }
+
+    @И("На странице {string} в появившемся выпадающем меню нажимает на кнопку {string}")
+    public void наСтраницеВПоявившемсяВыпадающемМенюНажимаетНаКнопкуПодписаться(String title, String subsButton)
+            throws IllegalAccessException, InstantiationException, ClassNotFoundException, InvocationTargetException {
+        getPageByTitle(title).getElementByName(subsButton).click();
+    }
+
+    @И("На странице {string} проверить – что среди подписок есть те, на которые он подписался ранее в этом сценарии")
+    public void наСтраницеПроверитьЧтоСредиПодписокЕстьТеНаКоторыеОнПодписалсяРанееВЭтомСценарии(String title)
+            throws InterruptedException {
+        checkSubscriptions();
+    }
+
+    @И("На странице {string} нажимает {string} от тех топиков на которые только что подписался")
+    public void наСтраницеНажимаетОтТехТопиковНаКоторыеТолькоЧтоПодписался(String title, String button)
+            throws IllegalAccessException, InstantiationException, ClassNotFoundException, InvocationTargetException {
+        getPageByTitle(title).getElementByName(button);
+    }
 }

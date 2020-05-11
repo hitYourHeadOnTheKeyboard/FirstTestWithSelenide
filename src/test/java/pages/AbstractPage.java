@@ -15,6 +15,7 @@ public abstract class AbstractPage {
         CLASSES.add(MainPage.class);
         CLASSES.add(TopicPage.class);
         CLASSES.add(LoginPage.class);
+        CLASSES.add(SubscribesPage.class);
     }
 
     public static String getUrlByTitle(String title) throws ClassNotFoundException {

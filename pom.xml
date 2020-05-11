@@ -26,15 +26,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>3.141.59</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.codeborne/selenide -->
-    <dependency>
       <groupId>com.codeborne</groupId>
       <artifactId>selenide</artifactId>
       <version>5.11.1</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -93,15 +88,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>8</source>
-                  <target>8</target>
-              </configuration>
-          </plugin>
-      </plugins>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

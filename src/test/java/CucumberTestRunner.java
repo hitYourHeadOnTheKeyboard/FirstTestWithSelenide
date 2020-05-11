@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = "stepdefs",
-        tags = "@Test"
+        tags = "@TestOfSubscription"
 )
 public class CucumberTestRunner {
 }
